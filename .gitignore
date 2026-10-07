@@ -1,0 +1,105 @@
+# ==========================================
+# 1. Biến môi trường & Thông tin bảo mật
+# ==========================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Chặn toàn bộ file chứng chỉ SSL/TLS trong thư mục certs
+nginx/certs/*
+# Ngoại trừ file .gitkeep để Git vẫn giữ lại thư mục rỗng
+!nginx/certs/.gitkeep
+
+# Chặn file chứa hash mật khẩu Prometheus 
+nginx/.htpasswd
+
+# Chặn toàn bộ file cấu hình Grafana
+monitoring/grafana/grafana.ini
+
+# ==========================================
+# 2. Hệ điều hành & IDE / Editor
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehpriv.ec
+Desktop.ini
+$RECYCLE.BIN/
+
+# Visual Studio Code & JetBrains (PyCharm/WebStorm)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==========================================
+# 3. Node.js & Frontend (React/Vite)
+# ==========================================
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
+.eslintcache
+.stylelintcache
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+grafana/alerting/*
+grafana/plugins/*
+# Ngoại trừ file .gitkeep để Git vẫn giữ lại thư mục rỗng
+!grafana/alerting/.gitkeep
+!grafana/plugins/.gitkeep
+
+# ==========================================
+# 4. Python & Backend (FastAPI/PostgreSQL)
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Testing & Coverage
+.pytest_cache/
+**/ .pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Local Database Files (SQLite nếu có)
+*.db
+*.sqlite3
+
+# ==========================================
+# 5. Docker & Temporary Files
+# ==========================================
+*.tmp
+*.bak
+.docker/
