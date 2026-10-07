@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: 'System & Database Dashboards'
+    orgId: 1
+    folder: 'Infrastructure' # Tên thư mục gom nhóm trên giao diện Grafana
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/json
