@@ -97,8 +97,10 @@ services:
       PROMETHEUS_AUTH_PASS: ${PROMETHEUS_AUTH_PASS}
     volumes:
       - ./nginx:/etc/nginx/htpasswd_out
+    networks:
+      - backend-net   
     command: >
-      sh -c "htpasswd -bc /etc/nginx/htpasswd_out/.htpasswd $$PROMETHEUS_AUTH_USER $$PROMETHEUS_AUTH_PASS"
+      sh -c "htpasswd -bc /etc/nginx/htpasswd_out/.htpasswd $$PROMETHEUS_AUTH_USER $$PROMETHEUS_AUTH_PASS"  
 
   # 5. Reverse Proxy Nginx
   nginx:

@@ -1,0 +1,51 @@
+# ==========================================
+# Grafana Configuration - SDM332 Stack
+# ==========================================
+
+[paths]
+data = /var/lib/grafana
+logs = /var/log/grafana
+plugins = /var/lib/grafana/plugins
+provisioning = /etc/grafana/provisioning
+
+[server]
+# Chạy HTTP nội bộ vì Nginx đã đảm nhận HTTPS / SSL Termination
+protocol = http
+http_addr = 0.0.0.0
+http_port = 3000
+
+# Cấu hình Domain và Sub-path khớp với Nginx proxy
+domain = 192.168.xxx.xxx
+root_url = %(protocol)s://%(domain)s/grafana/
+serve_from_sub_path = true
+
+[security]
+# Tài khoản Admin mặc định (Có thể ghi đè qua biến môi trường GF_SECURITY_ADMIN_PASSWORD)
+admin_user = admin_example
+
+# Cho phép gửi Cookie qua kết nối HTTPS từ Nginx
+cookie_secure = true
+cookie_samesite = lax
+
+# Tắt tính năng nhúng iframe nếu không có nhu cầu
+allow_embedding = false
+
+[users]
+# Tắt tự đăng ký tài khoản mới trên giao diện
+allow_sign_up = false
+auto_assign_org = true
+auto_assign_org_role = Viewer
+
+[auth.anonymous]
+# Tắt truy cập ẩn danh (yêu cầu đăng nhập mới xem được dashboard)
+enabled = false
+
+[analytics]
+# Tắt gửi dữ liệu thống kê về Grafana
+reporting_enabled = false
+check_for_updates = false
+
+[log]
+# Ghi log ra console để Docker gom log qua Promtail
+mode = console
+level = info
